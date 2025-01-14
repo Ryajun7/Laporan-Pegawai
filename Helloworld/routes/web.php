@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/hello', [HelloController::class, 'showForm'])->name('hello.form');
-Route::post('/hello', [HelloController::class, 'processForm'])->name('hello.process');
-Route::get('/hello/{n}', [HelloController::class, 'index']);
+Route::get('/', [HelloController::class, 'showForm'])->name('hello.form');
+Route::post('/', [HelloController::class, 'processForm'])->name('hello.process');
+Route::get('/{n}', [HelloController::class, 'index']);
 Route::get('/', function () {
-    return view('welcome');
+    return view('Hello');
 });

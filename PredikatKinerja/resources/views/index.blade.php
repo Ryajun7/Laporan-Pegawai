@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,14 @@
         body {
             padding: 20px;
         }
+
         #hasil-prediksi {
             margin-top: 20px;
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -41,7 +44,9 @@
         <button class="btn btn-primary" id="prediksi-button">Prediksi</button>
 
         <div id="hasil-prediksi">
-            Hasil Prediksi: <span id="hasil"></span>
+            Hasil Prediksi:
+            <br>
+            <span id="hasil"></span>
         </div>
     </div>
 
@@ -64,12 +69,13 @@
                         $('#hasil').text(response.prediksi);
                     },
                     error: function(error) {
-                      console.log(error);
-                      alert("Terjadi kesalahan. Silakan coba lagi.");
+                        console.log(error);
+                        alert("Terjadi kesalahan. Silakan coba lagi.");
                     }
                 });
             });
         });
     </script>
 </body>
+
 </html>

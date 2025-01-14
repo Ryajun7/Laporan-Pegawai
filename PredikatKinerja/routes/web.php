@@ -16,5 +16,5 @@ use App\Http\Controllers\KinerjaController;
 Route::get('/kinerja', [KinerjaController::class, 'index']);
 Route::post('/prediksi', [KinerjaController::class, 'prediksi'])->name('prediksi');
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
