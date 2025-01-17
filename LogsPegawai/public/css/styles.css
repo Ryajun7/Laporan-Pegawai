@@ -1,5 +1,5 @@
 .sidebar {
-    height: 100vh;
+    height: -webkit-fill-available;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,29 +19,34 @@
     transition: margin-left 0.3s ease-in-out;
 }
 
-
-.nav-link {
+.nav-link, .brand {
     display: flex;
     align-items: center;
     padding: 0.5rem 1rem;
     white-space: nowrap;
     color: aliceblue;
     border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s ease-in-out; /* Tambahkan transisi box-shadow */
 }
 
 .nav-link:hover {
     background-color: aliceblue;
     color: #16C47F;
-    border-radius: 10px;
+    box-shadow: 0 0 0.5rem 0.2rem rgba(255, 255, 255, 0.5); /* Efek glow hover */
+}
+.brand:hover{
+    box-shadow: 0 0 0.5rem 0.2rem rgba(255, 255, 255, 0.5); /* Efek glow hover */
 }
 
-.nav-link i {
+.nav-link i, .brand i {
     font-size: 1.2rem;
+    transition: transform 0.3s ease-in-out;
 }
 
-.nav-link span {
+.nav-link span, .brand span {
     margin-left: 10px;
     display: none;
+    transition: display 0.3s;
 }
 
 .sidebar:hover {
@@ -52,10 +57,18 @@
     margin-left: 150px;
 }
 
-.sidebar:hover .nav-link span {
+.sidebar:hover .nav-link span, .sidebar:hover .brand span {
     display: inline;
+}
+
+.sidebar:hover .brand i {
+    transform: rotate(90deg);
 }
 
 .sidebar-menu {
     flex-grow: 1;
+}
+
+.brand {
+    pointer-events: none;
 }

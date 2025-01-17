@@ -37,17 +37,18 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('NIP', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect('/dashboard');
+        $credentials = $request->validate([
+            'NIP' => 'required',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials, $request->remember)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard');
         }
 
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect('/dashboard');
-        }
-
-        return back()->withErrors(['login' => 'NIP/Email atau password salah.'])->withInput();
+        return back()->withErrors(['login' => 'NIP atau password salah.'])->withInput();
     }
 
     public function logout(Request $request)

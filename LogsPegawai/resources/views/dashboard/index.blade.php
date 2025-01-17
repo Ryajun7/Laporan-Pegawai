@@ -18,7 +18,8 @@
 
     <div class="row mt-4">
         <div class="col">
-            <table class="table table-hover table-responsive">  <thead>
+            <table class="table table-hover table-responsive">
+                <thead>
                     <tr>
                         <th scope="col">NIP</th>
                         <th scope="col">Nama</th>
@@ -41,29 +42,35 @@
                             <td class="align-middle">
                                 @if (Auth::user()->NIP === $catatan->NIP)
                                     @if ($catatan->Status === 'Pending')
-                                        <form action="{{ route('logs.edit', $catatan->id) }}" method="GET">
-                                            @csrf
-                                            <button type="submit" class="btn btn-warning">Edit</button>
-                                        </form>
-                                        <form action="{{ route('logs.destroy', $catatan->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin akan menghapus catatan ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
-                                        </form>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <form action="{{ route('logs.submit', $catatan->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                            </form>
+                                            <form action="{{ route('logs.edit', $catatan->id) }}" method="GET">
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                            </form>
+                                            <form action="{{ route('logs.destroy', $catatan->id) }}" method="POST"
+                                                onsubmit="return confirm('Apakah Anda yakin akan menghapus catatan ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                        </div>
                                     @else
-                                        <form action="{{ route('logs.submit', $catatan->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </form>
-                                        <form action="{{ route('logs.edit', $catatan->id) }}" method="GET">
-                                            @csrf
-                                            <button type="submit" class="btn btn-warning">Edit</button>
-                                        </form>
-                                        <form action="{{ route('logs.destroy', $catatan->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin akan menghapus catatan ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
-                                        </form>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <form action="{{ route('logs.edit', $catatan->id) }}" method="GET">
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                            </form>
+                                            <form action="{{ route('logs.destroy', $catatan->id) }}" method="POST"
+                                                onsubmit="return confirm('Apakah Anda yakin akan menghapus catatan ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                        </div>
                                     @endif
                                 @endif
                             </td>

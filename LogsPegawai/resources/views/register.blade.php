@@ -13,12 +13,10 @@
         .register-form {
             max-width: 400px;
             margin: 20px auto;
-            /* Added top/bottom margin for spacing */
             padding: 20px;
             border-radius: 5px;
             border: 1px solid #ddd;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            /* Added a subtle shadow */
         }
 
         .dropdown-menu.show {
@@ -34,7 +32,6 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">Register</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -47,6 +44,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form method="POST" action="/register" class="register-form">
+                    <h1 class="text-center">Register</h1>
                     @csrf
                     <div class="mb-3">
                         <label for="NIP" class="form-label">NIP</label>
@@ -92,8 +90,8 @@
                     </div>
                     <button type="submit" class="btn btn-success w-100">Register</button>
                 </form>
-                <div class="text-center mt-3">
-                    Sudah punya akun? <a href="/">Login</a>
+                <div class="text-center my-3">
+                    Sudah punya akun? <a class="text-decoration-none" href="/">Login</a>
                 </div>
             </div>
         </div>
